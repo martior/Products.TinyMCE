@@ -266,7 +266,7 @@ class ConfigurationViewlet(ViewletBase):
             prefix = ''
 
         # Case 3: Formlib
-        elif formlib.IForm.providedBy(self.view):
+        elif formlib.IForm.providedBy(self.view) and hasattr(self.view,'form_fields'):
             rtfields = [field.__name__ for field in self.view.form_fields
                         if field.custom_widget == WYSIWYGWidget]
             prefix = 'form\\\\.'
